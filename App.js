@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Menu from '../Codes/Menu';
 
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+    <Menu />
       <Text>Test</Text>
       <Text>Działa u mnie - Robert Kwoll</Text>
       <StatusBar style="auto" />
