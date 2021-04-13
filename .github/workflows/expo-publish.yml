@@ -18,8 +18,9 @@ jobs:
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn install
-      - run: expo login -u expo-username -p expo-password
+      - run: expo login -u $USERNAME -p $PASSWORD
+      - env:        
+          USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
+          PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: expo publish
