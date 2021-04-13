@@ -21,4 +21,5 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn install
+      - run: expo login -u expo-username -p expo-password
       - run: expo publish
