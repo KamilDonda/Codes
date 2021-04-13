@@ -23,14 +23,14 @@ export default function Scanner() {
   
     const handleBarCodeScanned = ({ type, data }) => {
       setScanned(true);
-      alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+      alert(`Typ kodu: ${type}\nKod: ${data}`);
     };
   
     if (hasPermission === null) {
-      return <Text>Requesting for camera permission</Text>;
+      return <Text>Wymagany dostep do kamery</Text>;
     }
     if (hasPermission === false) {
-      return <Text>No access to camera</Text>;
+      return <Text>Brak dostępu do aparatu</Text>;
     }
   
     return (
@@ -39,7 +39,7 @@ export default function Scanner() {
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFill}
         />
-        {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+        {scanned && <Button title={'Naciśnij, aby zeskanować ponownie'} onPress={() => setScanned(false)} />}
       </View>
     );
 }
