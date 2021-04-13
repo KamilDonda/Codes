@@ -50,21 +50,21 @@ export function DrawerContent(props) {
             icon={() => <Ionicons name="images-outline" size={50} />}
             label="Galeria"
             onPress={() => {
-              props.navigation.navigate("Home");
+              props.navigation.navigate("Gallery");
             }}
           />
           <DrawerItem
             icon={() => <MaterialIcons name="history" size={50} />}
             label="Historia"
             onPress={() => {
-              props.navigation.navigate("Home");
+              props.navigation.navigate("History");
             }}
           />
           <DrawerItem
             icon={() => <AntDesign name="idcard" size={50} />}
             label="Autorzy"
             onPress={() => {
-              props.navigation.navigate("Home");
+              props.navigation.navigate("Authors");
             }}
           />
         </Drawer.Section>
