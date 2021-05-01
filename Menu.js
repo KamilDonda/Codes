@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Scanning from "./screens/Scanning";
 import Generating from "./screens/Generating";
+import Result from "./screens/Result";
 import { DrawerContent } from "./DrawerContent";
 
 const Stack = createStackNavigator();
@@ -49,6 +50,25 @@ const StackScanning = ({ navigation }) => (
       component={Scanning}
       options={{
         title: "Skanowanie",
+        headerLeft: () => (
+          <MaterialIcons
+            name="menu"
+            size={40}
+            onPress={() => navigation.openDrawer()}
+            style={styles.menu}
+          />
+        ),
+        headerRight: () => (
+          <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
+        ),
+      }}
+    />
+
+    <Stack.Screen
+      name="Result"
+      component={Result}
+      options={{
+        title: "Result",
         headerLeft: () => (
           <MaterialIcons
             name="menu"
