@@ -7,6 +7,7 @@ import {
   Linking,
 } from "react-native";
 import QRCode from "react-native-qrcode-svg";
+import Barcode from "react-native-barcode-builder";
 
 export default function Result({ route }) {
   const styles = StyleSheet.create({
@@ -53,12 +54,16 @@ export default function Result({ route }) {
 
   return (
     <View style={styles.container}>
-      <QRCode
-        value={route.params.data}
-        size={200}
-        bgColor="#000000"
-        fgColor="#FFFFFF"
-      />
+      {route.params.data && route.params.data.includes("://") ? (
+        <QRCode
+          value={route.params.data}
+          size={200}
+          bgColor="#000000"
+          fgColor="#FFFFFF"
+        />
+      ) : (
+        <Barcode value={route.params.data} format="CODE128" />
+      )}
       <View style={styles.address}>
         <Text>{route.params.id}</Text>
         <Text>{route.params.data}</Text>
@@ -66,12 +71,16 @@ export default function Result({ route }) {
       <View style={styles.address}>
         <Text>{currentDate}</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => Linking.openURL(route.params.data)}
-        style={styles.button}
-      >
-        <Text>Otwórz URL</Text>
-      </TouchableOpacity>
+      {route.params.data && route.params.data.includes("://") ? (
+        <TouchableOpacity
+          onPress={() => Linking.openURL(route.params.data)}
+          style={styles.button}
+        >
+          <Text>Otwórz URL</Text>
+        </TouchableOpacity>
+      ) : (
+        ""
+      )}
     </View>
   );
 }
