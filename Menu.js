@@ -1,6 +1,6 @@
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
