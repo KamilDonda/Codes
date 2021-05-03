@@ -79,7 +79,7 @@ export default function Result({ route }) {
           <Text>Otwórz URL</Text>
         </TouchableOpacity>
       ) : (
-        ""
+        <Text></Text>
       )}
     </View>
   );
