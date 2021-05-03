@@ -82,9 +82,6 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-          ),
         }}
       />
     </Stack.Navigator>
@@ -113,9 +110,6 @@ export default function MainTabScreen() {
               onPress={() => navigation.openDrawer()}
               style={styles.menu}
             />
-          ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
           ),
         }}
       />
@@ -146,9 +140,6 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-          ),
         }}
       />
     </Stack.Navigator>
@@ -177,9 +168,6 @@ export default function MainTabScreen() {
               onPress={() => navigation.openDrawer()}
               style={styles.menu}
             />
-          ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
           ),
         }}
       />
