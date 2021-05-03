@@ -54,7 +54,8 @@ export default function Result({ route }) {
 
   return (
     <View style={styles.container}>
-      {route.params.data && route.params.data.includes("://") ? (
+      {route.params.data &&
+      (route.params.data.includes("://") || route.params.id === 256) ? (
         <QRCode
           value={route.params.data}
           size={200}
@@ -71,7 +72,8 @@ export default function Result({ route }) {
       <View style={styles.address}>
         <Text>{currentDate}</Text>
       </View>
-      {route.params.data && route.params.data.includes("://") ? (
+      {route.params.data &&
+      (route.params.data.includes("://") || route.params.id === 256) ? (
         <TouchableOpacity
           onPress={() => Linking.openURL(route.params.data)}
           style={styles.button}
