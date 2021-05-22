@@ -51,8 +51,21 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
+        }}
+      />
+
+      <Stack.Screen
+        name="Result"
+        component={Result}
+        options={{
+          title: "Wynik",
+          headerLeft: () => (
+            <MaterialIcons
+              name="menu"
+              size={40}
+              onPress={() => navigation.openDrawer()}
+              style={styles.menu}
+            />
           ),
         }}
       />
@@ -187,87 +200,3 @@ export default function MainTabScreen() {
     </NavigationContainer>
   );
 }
-
-const StackScanning = ({ navigation }) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: "#009387",
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
-    }}
-  >
-    <Stack.Screen
-      name="Home"
-      component={Scanning}
-      options={{
-        title: "Skanowanie",
-        headerLeft: () => (
-          <MaterialIcons
-            name="menu"
-            size={40}
-            onPress={() => navigation.openDrawer()}
-            style={styles.menu}
-          />
-        ),
-        headerRight: () => (
-          <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-        ),
-      }}
-    />
-
-    <Stack.Screen
-      name="Result"
-      component={Result}
-      options={{
-        title: "Result",
-        headerLeft: () => (
-          <MaterialIcons
-            name="menu"
-            size={40}
-            onPress={() => navigation.openDrawer()}
-            style={styles.menu}
-          />
-        ),
-        headerRight: () => (
-          <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-        ),
-      }}
-    />
-  </Stack.Navigator>
-);
-
-const StackGenerating = ({ navigation }) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: "#1f65ff",
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
-    }}
-  >
-    <Stack.Screen
-      name="Generowanie kodu"
-      component={Generating}
-      options={{
-        headerLeft: () => (
-          <MaterialIcons
-            name="menu"
-            size={40}
-            onPress={() => navigation.openDrawer()}
-            style={styles.menu}
-          />
-        ),
-        headerRight: () => (
-          <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-        ),
-      }}
-    />
-  </Stack.Navigator>
-);
