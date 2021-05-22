@@ -1,6 +1,6 @@
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -84,9 +84,6 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-          ),
         }}
       />
       <Stack.Screen
@@ -144,9 +141,6 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-          ),
         }}
       />
     </Stack.Navigator>
@@ -176,9 +170,6 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
-          ),
         }}
       />
     </Stack.Navigator>
@@ -207,9 +198,6 @@ export default function MainTabScreen() {
               onPress={() => navigation.openDrawer()}
               style={styles.menu}
             />
-          ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
           ),
         }}
       />
