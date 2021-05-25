@@ -7,6 +7,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Scanning from "./screens/Scanning";
 import Generating from "./screens/Generating";
+import GenerateBarcode from "./screens/GenerateBarcode";
+import GenerateQRcode from "./screens/GenerateQRcode";
 import Gallery from "./screens/Gallery";
 import History from "./screens/History";
 import Authors from "./screens/Authors";
@@ -73,6 +75,34 @@ export default function MainTabScreen() {
       <Stack.Screen
         name="Generowanie kodu"
         component={Generating}
+        options={{
+          headerLeft: () => (
+            <MaterialIcons
+              name="menu"
+              size={40}
+              onPress={() => navigation.openDrawer()}
+              style={styles.menu}
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Barcode Generator"
+        component={GenerateBarcode}
+        options={{
+          headerLeft: () => (
+            <MaterialIcons
+              name="menu"
+              size={40}
+              onPress={() => navigation.openDrawer()}
+              style={styles.menu}
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="QRcode Generator"
+        component={GenerateQRcode}
         options={{
           headerLeft: () => (
             <MaterialIcons
