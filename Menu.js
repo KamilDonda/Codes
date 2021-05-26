@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Scanning from "./screens/Scanning";
 import Generating from "./screens/Generating";
+import Result from "./screens/Result";
 import GenerateBarcode from "./screens/GenerateBarcode";
 import GenerateQRcode from "./screens/GenerateQRcode";
 import Gallery from "./screens/Gallery";
@@ -52,8 +53,21 @@ export default function MainTabScreen() {
               style={styles.menu}
             />
           ),
-          headerRight: () => (
-            <MaterialIcons name="lightbulb" size={40} style={styles.bulb} />
+        }}
+      />
+
+      <Stack.Screen
+        name="Result"
+        component={Result}
+        options={{
+          title: "Wynik",
+          headerLeft: () => (
+            <MaterialIcons
+              name="menu"
+              size={40}
+              onPress={() => navigation.openDrawer()}
+              style={styles.menu}
+            />
           ),
         }}
       />
