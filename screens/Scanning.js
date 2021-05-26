@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, ImageBackground } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import bg from "../assets/background.png";
 
-const opacity = 'rgba(0, 0, 0, .6)'
+const opacity = "rgba(0, 0, 0, .6)";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -18,14 +19,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   layerLeft: {
-    flex: 1,
+    flex: 2,
     backgroundColor: opacity,
   },
   focused: {
     flex: 10,
   },
   layerRight: {
-    flex: 1,
+    flex: 2,
     backgroundColor: opacity,
   },
   layerBottom: {
@@ -59,26 +60,27 @@ export default function Scanner({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.rectangle}></View>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFill}
-      >
-        <View style={styles.layerTop} />
-        <View style={styles.layerCenter}>
-          <View style={styles.layerLeft} />
-          <View style={styles.focused} />
-          <View style={styles.layerRight} />
-        </View>
-        <View style={styles.layerBottom} />
-      </BarCodeScanner>
-      {scanned && (
-        <Button
-          title={"Naciśnij, aby zeskanować ponownie"}
-          onPress={() => setScanned(false)}
-        />
-      )}
-    </View>
+    <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">
+      <View style={styles.container}>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={StyleSheet.absoluteFill}
+        >
+          <View style={styles.layerTop} />
+          <View style={styles.layerCenter}>
+            <View style={styles.layerLeft} />
+            <View style={styles.focused} />
+            <View style={styles.layerRight} />
+          </View>
+          <View style={styles.layerBottom} />
+        </BarCodeScanner>
+        {scanned && (
+          <Button
+            title={"Naciśnij, aby zeskanować ponownie"}
+            onPress={() => setScanned(false)}
+          />
+        )}
+      </View>
+    </ImageBackground>
   );
 }
