@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 
 export default function GenerateQRcode() {
@@ -28,6 +28,25 @@ export default function GenerateQRcode() {
   });
 
   const [text, onChangeText] = React.useState("");
+  const [name, setNames] = React.useState([]);
+
+  saveCode = () =>{
+    const v = text
+
+    state.index = state.index + 1
+    let data = {
+       id: state.index,
+       name: v,
+       type: "QrCode"
+   };  
+   const exists = state.names.some(v => (v.name === data.name && v.type === data.type));
+
+   if(!exists){
+    state.names.push(data);
+    setNames(state.names);
+   }
+
+ }
 
   return (
     <View style={styles.container}>
@@ -40,8 +59,10 @@ export default function GenerateQRcode() {
         <QRCode value={text} size={200} bgColor="#000000" fgColor="#FFFFFF" />
       ) : (
         <Text></Text>
+        
       )}
       <Text style={styles.info}>{text}</Text>
+      <Button title="Zapisz kod QR"  onPress={saveCode}  />
     </View>
   );
 }

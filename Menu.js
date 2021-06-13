@@ -164,7 +164,7 @@ export default function MainTabScreen() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#009900",
+          backgroundColor: "#1E90FF",
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
