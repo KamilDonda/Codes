@@ -1,41 +1,42 @@
 import React from "react";
-import { StyleSheet, Button, View, Text } from "react-native";
-
+import { StyleSheet, Image, View, Text } from "react-native";
 export default function Authors () {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
+    },
+    authorsStyle: {
+      marginLeft: 16,
+      textAlign: 'left',
+      color: 'black',
+      fontSize: 28,
     },
     bigPurple: {
-      color: '#9900ff',
-      fontWeight: 'bold',
-      fontSize: 30,
+      alignItems: 'flex-start',
+      textAlign: 'right',
+      color: 'black',
+      fontSize: 24,
+      marginRight: 46,
     },
-    darkPurple: {
-      color: 'purple',
-      fontWeight: 'bold',
-      fontSize: 20,
+    imageStyle: {
+      width: 400, 
+      height: 320,
+      resizeMode: 'contain',
     },
-    mediumPurple: {
-      color: 'mediumpurple',
-      fontWeight: 'bold',
-      fontSize: 15,
-    },
-  });
+  },);
 
   return (
+
+    
     <View style={styles.container}>
-      <Text style={styles.bigPurple}>• Kamil Donda </Text>
+      <Text style={styles.authorsStyle}> Organizacje: </Text>
+      <Image style={styles.imageStyle} source={require('../assets/authorsAsset.png')}/>
+      <Text style={styles.authorsStyle}> Autorzy: </Text>
+      <Text style={styles.bigPurple}>• Kamil Donda  </Text>
       <Text style={styles.bigPurple}>• Robert Kwoll  </Text>
       <Text style={styles.bigPurple}>• Daniel Piątek </Text>
-      <Text style={styles.bigPurple}>• Robert Olej </Text>
-      <Text style={styles.darkPurple}> Jesteśmy studentami, </Text>
-      <Text style={styles.darkPurple}> a to jest nasz projekt. </Text>
-      <Text style={styles.mediumPurple}> Kontakt: mail@mail.pl </Text>
-
-
+      <Text style={styles.bigPurple}>• Robert Olej     </Text>
     </View>
   );
 }
