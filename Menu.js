@@ -32,7 +32,8 @@ export default function MainTabScreen() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#009387",
+          backgroundColor: "#1E88E5",
+          elevation: 0,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -78,7 +79,8 @@ export default function MainTabScreen() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1f65ff",
+          backgroundColor: "#1E88E5",
+          elevation: 0,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -135,7 +137,8 @@ export default function MainTabScreen() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#cc0033",
+          backgroundColor: "#1E88E5",
+          elevation: 0,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -164,7 +167,8 @@ export default function MainTabScreen() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#009900",
+          backgroundColor: "#1E88E5",
+          elevation: 0,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -193,7 +197,8 @@ export default function MainTabScreen() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#9900ff",
+          backgroundColor: "#1E88E5",
+          elevation: 0,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
