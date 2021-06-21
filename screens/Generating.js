@@ -5,12 +5,14 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
+  useColorScheme
 } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import bg from "../assets/background.png";
+import darkbg from "../assets/darkBackground.png";
 
-export default function Generating({ navigation, route }) {
+export default function Generating({ navigation }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -36,26 +38,41 @@ export default function Generating({ navigation, route }) {
       margin: 10,
       color: "#F8F2F2",
     },
+    lightThemeText: {
+      color: '#F8F2F2',
+    },
+    darkThemeText: {
+      color: "#1D1D1D",
+    },
+    lightThemeBackground: {
+      backgroundColor: '#FFFFFF'
+    },
+    darkThemeBackround: {
+      backgroundColor: '#1D1D1D'
+    }
   });
 
-  console.log(route.params + " ge")
+  const colorScheme = useColorScheme();
+  const themeBackgroundStyle = colorScheme === 'light' ? styles.lightThemeBackground : styles.darkThemeBackround
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
 
   return (
-    <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">
+    <ImageBackground source={colorScheme === "light" ? bg : darkbg} style={[{ flex: 1 }, themeBackgroundStyle]} resizeMode="stretch">
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.code}
           onPress={() => navigation.navigate("Barcode Generator")}
         >
           <AntDesign name="barcode" size={70} style={styles.menu} />
-          <Text style={styles.info}>Barcode</Text>
+          <Text style={[styles.info, themeTextStyle]}>Barcode</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.code}
           onPress={() => navigation.navigate("QRcode Generator")}
         >
           <MaterialCommunityIcons name="qrcode" size={70} style={styles.menu} />
-          <Text style={styles.info}>QRcode</Text>
+          <Text style={[styles.info, themeTextStyle]}>QRcode</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

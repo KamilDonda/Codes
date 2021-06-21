@@ -10,6 +10,7 @@ import {
 import QRCode from "react-native-qrcode-svg";
 import Barcode from "react-native-barcode-builder";
 import bg from "../assets/background.png";
+import darkbg from "../assets/darkBackground.png";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Entypo from "react-native-vector-icons/Entypo";
 
@@ -57,6 +58,24 @@ export default function Result({ route }) {
       margin: 10,
       color: "#F8F2F2",
     },
+    lightThemeText: {
+      color: "#1D1D1D",
+    },
+    darkThemeText: {
+      color: "#F8F2F2",
+    },
+    lightThemeButton: {
+      color: "#F8F2F2",
+    },
+    darkThemeButton: {
+      color: "#1D1D1D",
+    },
+    lightThemeBackground: {
+      backgroundColor: "#FFFFFF",
+    },
+    darkThemeBackround: {
+      backgroundColor: "#1D1D1D",
+    },
   });
 
   const [date, SetDate] = React.useState("");
@@ -78,12 +97,26 @@ export default function Result({ route }) {
     SetHour(hours + ":" + min);
   }, []);
 
+  const colorScheme = useColorScheme();
+  const themeBackgroundStyle =
+    colorScheme === "light"
+      ? styles.lightThemeBackground
+      : styles.darkThemeBackround;
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeButtonStyle =
+    colorScheme === "light" ? styles.lightThemeButton : styles.darkThemeButton;
+
   return (
-    <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">
+    <ImageBackground
+      source={colorScheme === "light" ? bg : darkbg}
+      style={[{ flex: 1 }, themeBackgroundStyle]}
+      resizeMode="stretch"
+    >
       <View style={styles.container}>
         <View style={styles.day}>
-          <Text style={styles.data}>{date}</Text>
-          <Text style={styles.data}>{hour}</Text>
+          <Text style={[styles.data, themeTextStyle]}>{date}</Text>
+          <Text style={[styles.data, themeTextStyle]}>{hour}</Text>
         </View>
         {route.params.data &&
         (route.params.data.includes("://") || route.params.id === 256) ? (
@@ -99,7 +132,7 @@ export default function Result({ route }) {
         <Text style={styles.result}>{route.params.data}</Text>
         <TouchableOpacity style={styles.code}>
           <MaterialIcons name="save" size={60} style={styles.menu} />
-          <Text style={styles.info}>Zapisz kod</Text>
+          <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
         </TouchableOpacity>
         {route.params.data &&
         (route.params.data.includes("://") || route.params.id === 256) ? (
@@ -108,7 +141,7 @@ export default function Result({ route }) {
             style={styles.code}
           >
             <Entypo name="link" size={60} style={styles.menu} />
-            <Text style={styles.info}>Otwórz URL</Text>
+            <Text style={[styles.info, themeButtonStyle]}>Otwórz URL</Text>
           </TouchableOpacity>
         ) : (
           <Text></Text>

@@ -26,27 +26,26 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   lightThemeText: {
-    color: "white",
+    color: "#F8F2F2",
   },
   darkThemeText: {
-    color: "black",
+    color: "#1D1D1D",
   },
 });
 
 export default function MainTabScreen() {
-
   const colorScheme = useColorScheme();
-const themeTextStyle =
-  colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
 
   const StackScanning = ({ navigation }) => (
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1E88E5",
+          backgroundColor: colorScheme === "light" ? "#1E88E5" : "#1E88E5",
           elevation: 0,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colorScheme === "light" ? "#F8F2F2" : "#1D1D1D",
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -90,10 +89,10 @@ const themeTextStyle =
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1E88E5",
+          backgroundColor: colorScheme === "light" ? "#1E88E5" : "#1E88E5",
           elevation: 0,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colorScheme === "light" ? "#F8F2F2" : "#1D1D1D",
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -148,10 +147,10 @@ const themeTextStyle =
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1E88E5",
+          backgroundColor: colorScheme === "light" ? "#1E88E5" : "#1E88E5",
           elevation: 0,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colorScheme === "light" ? "#F8F2F2" : "#1D1D1D",
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -178,10 +177,10 @@ const themeTextStyle =
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1E88E5",
+          backgroundColor: colorScheme === "light" ? "#1E88E5" : "#1E88E5",
           elevation: 0,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colorScheme === "light" ? "#F8F2F2" : "#1D1D1D",
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -208,10 +207,10 @@ const themeTextStyle =
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1E88E5",
+          backgroundColor: colorScheme === "light" ? "#1E88E5" : "#1E88E5",
           elevation: 0,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colorScheme === "light" ? "#F8F2F2" : "#1D1D1D",
         headerTitleStyle: {
           fontWeight: "bold",
         },

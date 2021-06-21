@@ -8,6 +8,7 @@ import {
   useColorScheme,
 } from "react-native";
 import bg from "../assets/background.png";
+import darkbg from "../assets/darkBackground.png";
 
 export default function Authors() {
   const styles = StyleSheet.create({
@@ -41,27 +42,31 @@ export default function Authors() {
       justifyContent: "space-between",
     },
     lightThemeText: {
-      color: "white",
+      color: '#F8F2F2',
     },
     darkThemeText: {
-      color: "black",
+      color: "#1D1D1D",
     },
+    lightThemeBackground: {
+      backgroundColor: '#FFFFFF'
+    },
+    darkThemeBackround: {
+      backgroundColor: '#1D1D1D'
+    }
   });
 
   const colorScheme = useColorScheme();
-  //const themeBackgroundStyle = colorScheme === 'light' ? styles.lightThemeBackground : styles.darkThemeBackround
+  const themeBackgroundStyle = colorScheme === 'light' ? styles.lightThemeBackground : styles.darkThemeBackround
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  
-  console.log(colorScheme + " omg")
 
   return (
-    <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">
+    <ImageBackground source={colorScheme === "light" ? bg : darkbg} style={[{ flex: 1 }, themeBackgroundStyle]} resizeMode="stretch">
       <View style={styles.container}>
         <Text style={[styles.authorsStyle , themeTextStyle]}> Organizacje </Text>
         <Image
           style={styles.imageStyle}
-          source={require("../assets/authorsAsset.png")}
+          source={colorScheme === "light" ? require("../assets/authorsAsset.png") :  require("../assets/DarkmodeAuthorsAsset.png")}
         />
         <Text style={[styles.authorsStyle, themeTextStyle]}> Autorzy </Text>
         <View style={styles.authors}>

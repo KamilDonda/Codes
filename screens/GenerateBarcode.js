@@ -6,9 +6,11 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  useColorScheme,
 } from "react-native";
 import Barcode from "react-native-barcode-builder";
 import bg from "../assets/background.png";
+import darkbg from "../assets/darkBackground.png";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 export default function GenerateBarcode() {
@@ -26,7 +28,6 @@ export default function GenerateBarcode() {
     },
     data: {
       fontSize: 18,
-      color: "#1D1D1D",
       fontWeight: "bold",
     },
     input: {
@@ -56,7 +57,24 @@ export default function GenerateBarcode() {
       fontSize: 24,
       fontWeight: "bold",
       margin: 10,
+    },
+    lightThemeText: {
+      color: "#1D1D1D",
+    },
+    darkThemeText: {
       color: "#F8F2F2",
+    },
+    lightThemeButton: {
+      color: "#F8F2F2",
+    },
+    darkThemeButton: {
+      color: "#1D1D1D",
+    },
+    lightThemeBackground: {
+      backgroundColor: "#FFFFFF",
+    },
+    darkThemeBackround: {
+      backgroundColor: "#1D1D1D",
     },
   });
 
@@ -80,27 +98,38 @@ export default function GenerateBarcode() {
     SetHour(hours + ":" + min);
   }, [text]);
 
+  const colorScheme = useColorScheme();
+  const themeBackgroundStyle =
+    colorScheme === "light"
+      ? styles.lightThemeBackground
+      : styles.darkThemeBackround;
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeButtonStyle =
+    colorScheme === "light" ? styles.lightThemeButton : styles.darkThemeButton;
+
   return (
-    <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">
+    <ImageBackground
+      source={colorScheme === "light" ? bg : darkbg}
+      style={[{ flex: 1 }, themeBackgroundStyle]}
+      resizeMode="stretch"
+    >
       <View style={styles.container}>
         <View style={styles.day}>
-          <Text style={styles.data}>{date}</Text>
-          <Text style={styles.data}>{hour}</Text>
+          <Text style={[styles.data, themeTextStyle]}>{date}</Text>
+          <Text style={[styles.data, themeTextStyle]}>{hour}</Text>
         </View>
-        {text ? (
-          <Barcode value={text} format="CODE128"/>
-        ) : (
-          <Text></Text>
-        )}
+        {text ? <Barcode value={text} format="CODE128" /> : <Text></Text>}
         <TextInput
-          style={styles.input}
+          style={[styles.input, themeTextStyle]}
           onChangeText={onChangeText}
           value={text}
           placeholder="Wprowadź kod"
+          placeholderTextColor={colorScheme === "light" ? "#1D1D1D" : "#F8F2F2"}
         />
         <TouchableOpacity style={styles.code}>
           <MaterialIcons name="save" size={70} style={styles.menu} />
-          <Text style={styles.info}>Zapisz kod</Text>
+          <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
