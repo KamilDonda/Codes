@@ -10,7 +10,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import bg from "../assets/background.png";
 
-export default function Generating({ navigation }) {
+export default function Generating({ navigation, route }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -37,6 +37,8 @@ export default function Generating({ navigation }) {
       color: "#F8F2F2",
     },
   });
+
+  console.log(route.params + " ge")
 
   return (
     <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">

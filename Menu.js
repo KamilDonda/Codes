@@ -1,6 +1,6 @@
 import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { StyleSheet } from "react-native";
+import { StyleSheet, useColorScheme } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -25,9 +25,20 @@ const styles = StyleSheet.create({
   bulb: {
     marginRight: 10,
   },
+  lightThemeText: {
+    color: "white",
+  },
+  darkThemeText: {
+    color: "black",
+  },
 });
 
 export default function MainTabScreen() {
+
+  const colorScheme = useColorScheme();
+const themeTextStyle =
+  colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+
   const StackScanning = ({ navigation }) => (
     <Stack.Navigator
       screenOptions={{
