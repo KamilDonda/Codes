@@ -10,29 +10,42 @@ export default function Authors() {
     },
     authorsStyle: {
       marginLeft: 16,
-      textAlign: "center",
+      textAlign: "left",
       color: "white",
       fontSize: 26,
       fontWeight: "bold",
     },
+    authorsStyle2: {
+      marginLeft: 16,
+      textAlign: "left",
+      alignSelf: 'stretch',
+      marginLeft: '13%',
+      color: "black",
+      fontSize: 20,
+      fontWeight: "bold",
+      marginBottom: "4%"
+    },
     names: {
-      color: "white",
-      fontSize: 24,
-      margin: 2,
+      color: "black",
+      fontSize: 16,
+
+      marginTop: 2,
     },
     imageStyle: {
       flex: 1,
-      width: "100%",
-      height: "100%",
+      width: "82%",
+      height: "82%",
       resizeMode: "contain",
     },
     row: {
+
       flexDirection: "row",
       justifyContent: "space-between",
     },
     authors: {
-      width: 300,
+      width: 200,
       justifyContent: "space-between",
+      marginBottom: '40%'
     },
   });
 
@@ -44,7 +57,7 @@ export default function Authors() {
           style={styles.imageStyle}
           source={require("../assets/authorsAsset.png")}
         />
-        <Text style={styles.authorsStyle}> Autorzy </Text>
+        <Text style={styles.authorsStyle2}> Autorzy: </Text>
         <View style={styles.authors}>
           <View style={styles.row}>
             <Text style={styles.names}>Kamil Donda</Text>
