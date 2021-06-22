@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   useColorScheme,
+  AsyncStorage,
 } from "react-native";
 import Barcode from "react-native-barcode-builder";
 import bg from "../assets/background.png";
@@ -81,6 +82,7 @@ export default function GenerateBarcode() {
   const [text, onChangeText] = React.useState("");
   const [date, SetDate] = React.useState("");
   const [hour, SetHour] = React.useState("");
+  const [name, setNames] = React.useState([]);
 
   React.useEffect(() => {
     var date = new Date().getDate(); //Current Date
@@ -108,6 +110,38 @@ export default function GenerateBarcode() {
   const themeButtonStyle =
     colorScheme === "light" ? styles.lightThemeButton : styles.darkThemeButton;
 
+  loadHistory = async () => {
+    try{
+      if(state.names.length == 0){
+        if(JSON.parse(await AsyncStorage.getItem('history')) != 0)
+          state.names = JSON.parse(await AsyncStorage.getItem('history'));
+      }
+    }catch(error){
+      alert(error);
+    }
+    saveCode()
+  }
+
+  saveCode = () =>{
+    let index;
+    if(state.names.length == 0)
+      index = 0;
+    else 
+      index = state.names[state.names.length - 1].id + 1;
+    let data = {
+       id: index,
+       name: text,
+       type: "Barcode"
+   };
+
+   const exists = state.names.some(v => (v.name === data.name && v.type === data.type));
+   if(!exists){
+    state.names.push(data);
+    AsyncStorage.setItem('history',JSON.stringify(state.names));
+    console.warn('Dodano kod');
+   }
+ }
+
   return (
     <ImageBackground
       source={colorScheme === "light" ? bg : darkbg}
@@ -129,7 +163,7 @@ export default function GenerateBarcode() {
         />
         <TouchableOpacity style={styles.code}>
           <MaterialIcons name="save" size={70} style={styles.menu} />
-          <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
+          <Text style={[styles.info, themeButtonStyle]} onPress={saveCode}>Zapisz kod</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
