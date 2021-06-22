@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   Linking,
   ImageBackground,
-  useColorScheme
+  useColorScheme,
+  AsyncStorage
 } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import Barcode from "react-native-barcode-builder";
@@ -98,6 +99,38 @@ export default function Result({ route }) {
     SetHour(hours + ":" + min);
   }, []);
 
+  loadHistory = async () => {
+    try{
+      if(state.names.length == 0){
+        if(JSON.parse(await AsyncStorage.getItem('history')) != 0)
+          state.names = JSON.parse(await AsyncStorage.getItem('history'));
+      }
+    }catch(error){
+      alert(error);
+    }
+    saveCode()
+  }
+
+  saveCode = () =>{
+    let index;
+    if(state.names.length == 0)
+      index = 0;
+    else 
+      index = state.names[state.names.length - 1].id + 1;
+    let data = {
+       id: index,
+       name: route.params.data,
+       type: route.params.id === 256 ? "QrCode" :"Barcode"
+   };
+
+   const exists = state.names.some(v => (v.name === data.name && v.type === data.type));
+   if(!exists){
+    state.names.push(data);
+    AsyncStorage.setItem('history',JSON.stringify(state.names));
+    console.warn('Dodano kod');
+   }
+ }
+
   const colorScheme = useColorScheme();
   const themeBackgroundStyle =
     colorScheme === "light"
@@ -131,7 +164,7 @@ export default function Result({ route }) {
           <Barcode value={route.params.data} format="CODE128" />
         )}
         <Text style={styles.result}>{route.params.data}</Text>
-        <TouchableOpacity style={styles.code}>
+        <TouchableOpacity style={styles.code} onPress={saveCode}>
           <MaterialIcons name="save" size={60} style={styles.menu} />
           <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
         </TouchableOpacity>
