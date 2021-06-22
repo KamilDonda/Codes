@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, ImageBackground } from "react-native";
+import { Text, View, StyleSheet, Button, ImageBackground, useColorScheme } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import bg from "../assets/background.png";
 
@@ -33,11 +33,20 @@ const styles = StyleSheet.create({
     flex: 0.5,
     backgroundColor: opacity,
   },
+  lightThemeBackground: {
+    backgroundColor: "#FFFFFF",
+  },
+  darkThemeBackround: {
+    backgroundColor: "#1D1D1D",
+  },
 });
 
 export default function Scanner({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+
+  const colorScheme = useColorScheme();
+  const themeBackgroundStyle = colorScheme === 'light' ? styles.lightThemeBackground : styles.darkThemeBackround
 
   useEffect(() => {
     (async () => {
@@ -60,7 +69,7 @@ export default function Scanner({ navigation }) {
   }
 
   return (
-    <ImageBackground source={bg} style={{ flex: 1 }} resizeMode="stretch">
+    <ImageBackground source={bg} style={[{ flex: 1 }, themeBackgroundStyle]} resizeMode="stretch">
       <View style={styles.container}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}

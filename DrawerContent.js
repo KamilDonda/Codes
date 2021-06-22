@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Switch, View, Text } from "react-native";
-import { Drawer, TouchableRipple } from "react-native-paper";
+import { StyleSheet, View, useColorScheme } from "react-native";
+import { Drawer } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -20,67 +20,88 @@ export function DrawerContent(props) {
       paddingVertical: 12,
       paddingHorizontal: 16,
     },
+    lightThemeBackground: {
+      backgroundColor: "#FFFFFF",
+    },
+    darkThemeBackround: {
+      backgroundColor: "#1D1D1D",
+    },
+    lightThemeText: {
+      color: "#1D1D1D",
+    },
+    darkThemeText: {
+      color: "#FFFFFF",
+    },
   });
 
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+  const colorScheme = useColorScheme();
+  const themeBackgroundStyle =
+    colorScheme === "light"
+      ? styles.lightThemeBackground
+      : styles.darkThemeBackround;
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
 
   return (
-    <View style={styles.main}>
+    <View style={[styles.main, themeBackgroundStyle]}>
       <DrawerContentScrollView {...props}>
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
-            icon={() => <AntDesign name="camera" size={50} />}
+            icon={() => (
+              <AntDesign
+                name="camera"
+                size={50}
+                color={colorScheme === "light" ? "#1D1D1D" : "#FFFFFF"}
+              />
+            )}
             label="Skanowanie"
+            labelStyle={themeTextStyle}
             onPress={() => {
               props.navigation.navigate("Scan");
             }}
           />
           <DrawerItem
-            icon={() => <AntDesign name="barcode" size={50} />}
+            icon={() => (
+              <AntDesign
+                name="barcode"
+                size={50}
+                color={colorScheme === "light" ? "#1D1D1D" : "#FFFFFF"}
+              />
+            )}
             label="Generowanie kodu"
+            labelStyle={themeTextStyle}
             onPress={() => {
               props.navigation.navigate("Generate");
             }}
           />
           <DrawerItem
-            icon={() => <Ionicons name="images-outline" size={50} />}
-            label="Galeria"
-            onPress={() => {
-              props.navigation.navigate("Gallery");
-            }}
-          />
-          <DrawerItem
-            icon={() => <MaterialIcons name="history" size={50} />}
+            icon={() => (
+              <MaterialIcons
+                name="history"
+                size={50}
+                color={colorScheme === "light" ? "#1D1D1D" : "#FFFFFF"}
+              />
+            )}
             label="Historia"
+            labelStyle={themeTextStyle}
             onPress={() => {
               props.navigation.navigate("History");
             }}
           />
           <DrawerItem
-            icon={() => <AntDesign name="idcard" size={50} />}
+            icon={() => (
+              <AntDesign
+                name="idcard"
+                size={50}
+                color={colorScheme === "light" ? "#1D1D1D" : "#FFFFFF"}
+              />
+            )}
             label="Autorzy"
+            labelStyle={themeTextStyle}
             onPress={() => {
               props.navigation.navigate("Authors");
             }}
           />
-        </Drawer.Section>
-        <Drawer.Section title="Preferences">
-          <TouchableRipple
-            onPress={() => {
-              toggleTheme();
-            }}
-          >
-            <View style={styles.preference}>
-              <Text>Dark Theme</Text>
-              <View pointerEvents="none">
-                <Switch value={isDarkTheme} />
-              </View>
-            </View>
-          </TouchableRipple>
         </Drawer.Section>
       </DrawerContentScrollView>
     </View>
