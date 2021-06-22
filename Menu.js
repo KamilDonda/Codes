@@ -10,7 +10,6 @@ import Generating from "./screens/Generating";
 import Result from "./screens/Result";
 import GenerateBarcode from "./screens/GenerateBarcode";
 import GenerateQRcode from "./screens/GenerateQRcode";
-import Gallery from "./screens/Gallery";
 import History from "./screens/History";
 import Authors from "./screens/Authors";
 import { DrawerContent } from "./DrawerContent";
@@ -143,36 +142,6 @@ export default function MainTabScreen() {
     </Stack.Navigator>
   );
 
-  const StackGallery = ({ navigation }) => (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: colorScheme === "light" ? "#1E88E5" : "#1E88E5",
-          elevation: 0,
-        },
-        headerTintColor: colorScheme === "light" ? "#F8F2F2" : "#1D1D1D",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
-    >
-      <Stack.Screen
-        name="Galeria"
-        component={Gallery}
-        options={{
-          headerLeft: () => (
-            <MaterialIcons
-              name="menu"
-              size={40}
-              onPress={() => navigation.openDrawer()}
-              style={styles.menu}
-            />
-          ),
-        }}
-      />
-    </Stack.Navigator>
-  );
-
   const StackHistory = ({ navigation }) => (
     <Stack.Navigator
       screenOptions={{
@@ -238,7 +207,6 @@ export default function MainTabScreen() {
       <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
         <Drawer.Screen name="Scan" component={StackScanning} />
         <Drawer.Screen name="Generate" component={StackGenerating} />
-        <Drawer.Screen name="Gallery" component={StackGallery} />
         <Drawer.Screen name="History" component={StackHistory} />
         <Drawer.Screen name="Authors" component={StackAuthors} />
       </Drawer.Navigator>

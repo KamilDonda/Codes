@@ -76,20 +76,6 @@ export function DrawerContent(props) {
           />
           <DrawerItem
             icon={() => (
-              <Ionicons
-                name="images-outline"
-                size={50}
-                color={colorScheme === "light" ? "#1D1D1D" : "#FFFFFF"}
-              />
-            )}
-            label="Galeria"
-            labelStyle={themeTextStyle}
-            onPress={() => {
-              props.navigation.navigate("Gallery");
-            }}
-          />
-          <DrawerItem
-            icon={() => (
               <MaterialIcons
                 name="history"
                 size={50}
