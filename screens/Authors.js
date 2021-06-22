@@ -19,19 +19,9 @@ export default function Authors() {
     },
     authorsStyle: {
       marginLeft: 16,
-      textAlign: "left",
+      textAlign: "center",
       fontSize: 26,
       fontWeight: "bold",
-    },
-    authorsStyle2: {
-      marginLeft: 16,
-      textAlign: "left",
-      alignSelf: 'stretch',
-      marginLeft: '13%',
-      color: "black",
-      fontSize: 20,
-      fontWeight: "bold",
-      marginBottom: "4%"
     },
     names: {
       fontSize: 24,
@@ -39,19 +29,17 @@ export default function Authors() {
     },
     imageStyle: {
       flex: 1,
-      width: "82%",
-      height: "82%",
+      width: "100%",
+      height: "100%",
       resizeMode: "contain",
     },
     row: {
-
       flexDirection: "row",
       justifyContent: "space-between",
     },
     authors: {
-      width: 200,
+      width: 300,
       justifyContent: "space-between",
-      marginBottom: '40%'
     },
     lightThemeText: {
       color: '#F8F2F2',

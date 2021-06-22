@@ -166,9 +166,9 @@ export default function GenerateQRcode() {
           placeholder="Wprowadź adres"
           placeholderTextColor={colorScheme === "light" ? "#1D1D1D" : "#F8F2F2"}
         />
-        <TouchableOpacity style={styles.code}>
+        <TouchableOpacity style={styles.code} onPress={saveCode}>
           <MaterialIcons name="save" size={70} style={styles.menu} />
-          <Text style={[styles.info, themeButtonStyle]} onPress={saveCode}>Zapisz kod</Text>
+          <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
