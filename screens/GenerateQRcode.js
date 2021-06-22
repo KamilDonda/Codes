@@ -163,7 +163,7 @@ export default function GenerateQRcode() {
           style={[styles.input, themeTextStyle]}
           onChangeText={onChangeText}
           value={text}
-          placeholder="Wprowadź adres"
+          placeholder="Wprowadź tekst"
           placeholderTextColor={colorScheme === "light" ? "#1D1D1D" : "#F8F2F2"}
         />
         <TouchableOpacity style={styles.code} onPress={saveCode}>

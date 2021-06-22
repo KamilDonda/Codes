@@ -6,9 +6,14 @@ import {
   Text,
   ImageBackground,
   useColorScheme,
+  Linking,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import bg from "../assets/background.png";
 import darkbg from "../assets/darkBackground.png";
+
+import github from "../assets/github.png";
+import github_dark from "../assets/github_dark.png";
 
 export default function Authors() {
   const styles = StyleSheet.create({
@@ -26,6 +31,7 @@ export default function Authors() {
     names: {
       fontSize: 24,
       margin: 2,
+      fontWeight: "bold",
     },
     imageStyle: {
       flex: 1,
@@ -40,35 +46,84 @@ export default function Authors() {
     authors: {
       width: 300,
       justifyContent: "space-between",
+      position: "absolute",
+      bottom: 15,
     },
     lightThemeText: {
-      color: '#F8F2F2',
+      color: "#F8F2F2",
     },
     darkThemeText: {
       color: "#1D1D1D",
     },
     lightThemeBackground: {
-      backgroundColor: '#FFFFFF'
+      backgroundColor: "#FFFFFF",
     },
     darkThemeBackround: {
-      backgroundColor: '#1D1D1D'
-    }
+      backgroundColor: "#1D1D1D",
+    },
+    logoImage: {
+      justifyContent: "flex-start",
+      width: 70,
+      height: 70,
+    },
+    logoText: {
+      justifyContent: "flex-end",
+      height: 70,
+      textAlignVertical: "center",
+      fontSize: 20,
+      marginLeft: 50,
+    },
   });
 
   const colorScheme = useColorScheme();
-  const themeBackgroundStyle = colorScheme === 'light' ? styles.lightThemeBackground : styles.darkThemeBackround
+  const themeBackgroundStyle =
+    colorScheme === "light"
+      ? styles.lightThemeBackground
+      : styles.darkThemeBackround;
   const themeTextStyle =
     colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
 
+  const themeLogoTextStyle =
+    colorScheme === "light" ? styles.darkThemeText : styles.lightThemeText;
+
+  function logo(a, b, text, link) {
+    return (
+      <TouchableOpacity
+        style={{
+          flexDirection: "row",
+          marginHorizontal: 50,
+          height: 100,
+          alignItems: "center",
+          marginRight: 30
+        }}
+        onPress={() => Linking.openURL(link)}
+      >
+        <View>
+          <Image
+            style={styles.logoImage}
+            source={colorScheme === "light" ? a : b}
+          />
+        </View>
+        <View>
+          <Text style={[styles.logoText, themeLogoTextStyle]}>{text}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   return (
-    <ImageBackground source={colorScheme === "light" ? bg : darkbg} style={[{ flex: 1 }, themeBackgroundStyle]} resizeMode="stretch">
+    <ImageBackground
+      source={colorScheme === "light" ? bg : darkbg}
+      style={[{ flex: 1 }, themeBackgroundStyle]}
+      resizeMode="stretch"
+    >
       <View style={styles.container}>
-        <Text style={[styles.authorsStyle , themeTextStyle]}> Organizacje </Text>
-        <Image
-          style={styles.imageStyle}
-          source={colorScheme === "light" ? require("../assets/authorsAsset.png") :  require("../assets/DarkmodeAuthorsAsset.png")}
-        />
-        <Text style={[styles.authorsStyle, themeTextStyle]}> Autorzy </Text>
+        <View style={{ marginHorizontal: 50, width: "100%" }}>
+          {logo(github, github_dark, "Github", "https://github.com/KamilDonda/Codes")}
+          {logo(github, github_dark, "Silesian University of Technology", "https://www.polsl.pl/")}
+          {logo(github, github_dark, "Faculty of Applied Mathematics", "https://www.polsl.pl/rms/")}
+        </View>
+
         <View style={styles.authors}>
           <View style={styles.row}>
             <Text style={[styles.names, themeTextStyle]}>Kamil Donda</Text>
