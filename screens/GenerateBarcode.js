@@ -158,7 +158,7 @@ export default function GenerateBarcode() {
           style={[styles.input, themeTextStyle]}
           onChangeText={onChangeText}
           value={text}
-          placeholder="Wprowadź kod"
+          placeholder="Wprowadź tekst"
           placeholderTextColor={colorScheme === "light" ? "#1D1D1D" : "#F8F2F2"}
         />
         <TouchableOpacity style={styles.code} onPress={saveCode}>
