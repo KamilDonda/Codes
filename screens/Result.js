@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Linking,
   ImageBackground,
+  useColorScheme
 } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import Barcode from "react-native-barcode-builder";
@@ -135,7 +136,7 @@ export default function Result({ route }) {
           <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
         </TouchableOpacity>
         {route.params.data &&
-        (route.params.data.includes("://") || route.params.id === 256) ? (
+        (route.params.data.includes("://") && route.params.id === 256) ? (
           <TouchableOpacity
             onPress={() => Linking.openURL(route.params.data)}
             style={styles.code}
