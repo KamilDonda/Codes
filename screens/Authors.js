@@ -14,6 +14,8 @@ import darkbg from "../assets/darkBackground.png";
 
 import github from "../assets/github.png";
 import github_dark from "../assets/github_dark.png";
+import polsl from "../assets/polsl.png";
+import rms from "../assets/rms.png";
 
 export default function Authors() {
   const styles = StyleSheet.create({
@@ -120,8 +122,8 @@ export default function Authors() {
       <View style={styles.container}>
         <View style={{ marginHorizontal: 50, width: "100%" }}>
           {logo(github, github_dark, "Github", "https://github.com/KamilDonda/Codes")}
-          {logo(github, github_dark, "Silesian University of Technology", "https://www.polsl.pl/")}
-          {logo(github, github_dark, "Faculty of Applied Mathematics", "https://www.polsl.pl/rms/")}
+          {logo(polsl, polsl, "Politechnika Śląska", "https://www.polsl.pl/")}
+          {logo(rms, rms, "Wydział Matematyki Stosowanej", "https://www.polsl.pl/rms/")}
         </View>
 
         <View style={styles.authors}>
