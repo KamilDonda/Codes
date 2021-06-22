@@ -163,7 +163,7 @@ export default function Result({ route }) {
         ) : (
           <Barcode value={route.params.data} format="CODE128" />
         )}
-        <Text style={styles.result}>{route.params.data}</Text>
+        <Text style={[styles.result, themeTextStyle]}>{route.params.data}</Text>
         <TouchableOpacity style={styles.code} onPress={saveCode}>
           <MaterialIcons name="save" size={60} style={styles.menu} />
           <Text style={[styles.info, themeButtonStyle]}>Zapisz kod</Text>
