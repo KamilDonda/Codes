@@ -73,7 +73,8 @@ export default function Authors() {
       height: 70,
       textAlignVertical: "center",
       fontSize: 20,
-      marginLeft: 50,
+      marginLeft: 20,
+      maxWidth: 200,
     },
   });
 
